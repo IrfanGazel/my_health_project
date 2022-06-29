@@ -16,8 +16,16 @@ public class HomePage {
     @FindBy(xpath = "//*[text()='Register']")
     public WebElement registerButton;
 
-    @FindBy(xpath = "//*[text()='Registration']")
-    public WebElement registrationText;
+    @FindBy(xpath = "//*[text()='Sign in']")
+    public WebElement signInButton;
+
+    @FindBy(xpath = "//*[@id='entity-menu']")
+    public WebElement itemsAndTitlesButton;
+
+    @FindBy(xpath = "//a[@href='/patient']")
+    public WebElement patientButton;
+
+
 
 
 }

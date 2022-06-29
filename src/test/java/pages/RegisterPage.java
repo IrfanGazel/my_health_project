@@ -1,11 +1,16 @@
 package pages;
 
+import org.apache.hc.client5.http.entity.EntityBuilder;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class RegisterPage {
+
+
+
+
     public RegisterPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -16,11 +21,23 @@ public class RegisterPage {
     @FindBy(xpath = "//input[@id='ssn']")
     public WebElement ssnBox;
 
+    @FindBy(xpath = "//*[text()='Your SSN is required.']")
+    public WebElement ssnErrorMessage;
+
+    @FindBy(xpath="//*[text()='Your SSN is invalid']")
+    public WebElement ssnInvalidErrorMessage;
+
     @FindBy(xpath = "//input[@id='firstName']")
     public WebElement firstNameBox;
 
+    @FindBy(xpath = "//*[text()='Your FirstName is required.']")
+    public WebElement firstNameErrorMessage;
+
     @FindBy(xpath = "//input[@id='lastName']")
     public WebElement lastNameBox;
+
+    @FindBy(xpath = "//*[text()='Your LastName is required.']")
+    public WebElement lastNameErrorMessage;
 
     @FindBy(xpath = "//input[@id='username']")
     public WebElement usernameBox;

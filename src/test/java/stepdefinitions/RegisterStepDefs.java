@@ -5,6 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import pages.HomePage;
 import pages.RegisterPage;
 import utilities.ConfigurationReader;
@@ -14,6 +16,8 @@ public class RegisterStepDefs {
 
     HomePage homePage = new HomePage();
     RegisterPage registerPage = new RegisterPage();
+
+    Actions actions = new Actions(Driver.getDriver());
 
 
     @Given("user is on the home page")
@@ -50,4 +54,54 @@ public class RegisterStepDefs {
     public void userSendsLastNameAs(String arg0) {
         registerPage.lastNameBox.sendKeys("user_04");
     }
+
+    @Then("close the browser")
+    public void closeTheBrowser() {
+        Driver.closeDriver();
+
+    }
+
+    @Given("user does not send SSN number")
+    public void userDoesNotSendSSNNumber() {
+        registerPage.ssnBox.sendKeys("");
+    }
+
+    @Then("user should see the SNN-error message")
+    public void userShouldSeeTheSNNErrorMessage() {
+        Assert.assertTrue(registerPage.ssnErrorMessage.isDisplayed());
+    }
+
+    @And("user does not send first name")
+    public void userDoesNotSendFirstName() {
+        registerPage.firstNameBox.sendKeys("");
+    }
+
+
+    @Then("user should see the FirstName error message")
+    public void userShouldSeeTheFirstNameErrorMessage() {
+        Assert.assertTrue(registerPage.firstNameErrorMessage.isDisplayed());
+    }
+
+    @And("user does not send last name")
+    public void userDoesNotSendLastName() {
+        registerPage.lastNameBox.sendKeys("");
+        actions.sendKeys(Keys.TAB).build().perform();
+    }
+
+    @Then("user should see the LastName error message")
+    public void userShouldSeeTheLastNameErrorMessage() {
+        Assert.assertTrue(registerPage.lastNameErrorMessage.isDisplayed());
+    }
+
+
+    @Then("user should see the SNN-invalid message")
+    public void userShouldSeeTheSNNInvalidMessage() {
+        Assert.assertTrue(registerPage.ssnInvalidErrorMessage.isDisplayed());
+    }
+
+    @When("user sends in valid SSN number as {string}")
+    public void userSendsInValidSSNNumberAs(String ssn) {
+        registerPage.ssnBox.sendKeys(ssn);
+    }
 }
+
