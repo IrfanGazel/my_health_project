@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,8 +17,9 @@ import utilities.ReusableMethods;
 public class PatientsByAdminStepDefs {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
-
     PatientPage patientPage = new PatientPage();
+
+    Faker faker = new Faker();
 
 //
 //    @Given("user is on the home page")
@@ -71,24 +73,24 @@ public class PatientsByAdminStepDefs {
 
     @And("user enters valid patient credential and clicks save button")
     public void userEntersValidPatientCredentialAndClicksSaveButton() {
-        patientPage.firstNameBox.sendKeys("Irfan");
-        patientPage.lastNameBox.sendKeys("Team83");
+        patientPage.firstNameBox.sendKeys(faker.name().firstName());
+        patientPage.lastNameBox.sendKeys(faker.name().lastName());
         patientPage.birthDateBox.sendKeys("00198405050505");
-        patientPage.emailBox.sendKeys("trial_patient@gmail.com");
-        patientPage.phoneBox.sendKeys("1234567890");
+        patientPage.emailBox.sendKeys(faker.internet().emailAddress());
+        patientPage.phoneBox.sendKeys(faker.number().digits(10));
         Select select = new Select(patientPage.genderBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
         select = new Select(patientPage.bloodGroupBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
-        patientPage.addressBox.sendKeys("abcd");
-        patientPage.descriptionBox.sendKeys("abcd");
+        patientPage.addressBox.sendKeys(faker.address().streetAddress());
+        patientPage.descriptionBox.sendKeys(faker.lorem().paragraph());
         select = new Select(patientPage.userBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
         select = new Select(patientPage.countryBox);
         select.selectByVisibleText("USA");
         select = new Select(patientPage.stateBox);
         select.selectByVisibleText("California");
-        patientPage.saveButton.submit();
+        patientPage.saveButton.click();
 
     }
 
