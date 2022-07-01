@@ -4,17 +4,15 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PatientPage;
-import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class PatientsByAdminStepDefs {
+public class US_015_PatientsByAdminStepDefs {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
     PatientPage patientPage = new PatientPage();

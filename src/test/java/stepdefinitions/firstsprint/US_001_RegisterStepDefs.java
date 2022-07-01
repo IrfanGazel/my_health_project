@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepdefinitions.firstsprint;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,7 +12,7 @@ import pages.RegisterPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 
-public class RegisterStepDefs {
+public class US_001_RegisterStepDefs {
 
     HomePage homePage = new HomePage();
     RegisterPage registerPage = new RegisterPage();
