@@ -1,4 +1,4 @@
-package stepdefinitions;
+package stepdefinitions.firstsprint;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -70,7 +70,7 @@ public class US_015_PatientsByAdminStepDefs {
     }
 
     @And("user enters valid patient credential and clicks save button")
-    public void userEntersValidPatientCredentialAndClicksSaveButton() {
+    public void userEntersValidPatientCredentialAndClicksSaveButton() throws InterruptedException {
         patientPage.firstNameBox.sendKeys(faker.name().firstName());
         patientPage.lastNameBox.sendKeys(faker.name().lastName());
         patientPage.birthDateBox.sendKeys("00198405050505");
@@ -81,12 +81,13 @@ public class US_015_PatientsByAdminStepDefs {
         select = new Select(patientPage.bloodGroupBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
         patientPage.addressBox.sendKeys(faker.address().streetAddress());
-        patientPage.descriptionBox.sendKeys(faker.lorem().paragraph());
+        patientPage.descriptionBox.sendKeys(faker.lorem().word());
         select = new Select(patientPage.userBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
         select = new Select(patientPage.countryBox);
         select.selectByVisibleText("USA");
         select = new Select(patientPage.stateBox);
+        ReusableMethods.waitForVisibility(patientPage.stateBox, 5);
         select.selectByVisibleText("California");
         patientPage.saveButton.click();
 
