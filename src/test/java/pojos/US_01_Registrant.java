@@ -5,22 +5,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Arrays;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Registrant {
+public class US_01_Registrant {
     /*
-    {
+{
   "activated": true,
   "authorities": [
     "string"
   ],
   "createdBy": "string",
-  "createdDate": "2022-07-02T13:40:05.931Z",
+  "createdDate": "2022-07-03T18:52:11.111Z",
   "email": "string",
   "firstName": "string",
   "id": 0,
   "imageUrl": "string",
   "langKey": "string",
   "lastModifiedBy": "string",
-  "lastModifiedDate": "2022-07-02T13:40:05.931Z",
+  "lastModifiedDate": "2022-07-03T18:52:11.111Z",
   "lastName": "string",
   "login": "string",
   "password": "string",

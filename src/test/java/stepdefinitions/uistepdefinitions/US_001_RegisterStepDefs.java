@@ -1,4 +1,4 @@
-package stepdefinitions.firstsprint;
+package stepdefinitions.uistepdefinitions;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -10,8 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import pages.HomePage;
 import pages.RegisterPage;
-import pojos.Registrant;
-import utilities.ConfigurationReader;
+import pojos.US_01_Registrant;
 import utilities.Driver;
 
 public class US_001_RegisterStepDefs {
@@ -23,17 +22,10 @@ public class US_001_RegisterStepDefs {
 
     Faker faker = new Faker();
 
-    Registrant registrant = new Registrant();
+    US_01_Registrant US01Registrant = new US_01_Registrant();
 
-    @Given("user is on the home page")
-    public void userIsOnTheHomePage() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("medunna_login_url"));
-    }
 
-    @When("user clicks on the user icon")
-    public void userClicksOnTheUserIcon() {
-        homePage.userIcon.click();
-    }
+
 
     @And("user clicks on the register link")
     public void userClicksOnTheRegisterLink() {
@@ -47,7 +39,7 @@ public class US_001_RegisterStepDefs {
 
     @And("user sends SSN number")
     public void userSendsSSNNumberAs() {
-        registerPage.ssnBox.sendKeys(faker.numerify("###-##-####"));
+        registerPage.ssnBox.sendKeys(faker.idNumber().ssnValid());
     }
 
     @And("user sends first name")

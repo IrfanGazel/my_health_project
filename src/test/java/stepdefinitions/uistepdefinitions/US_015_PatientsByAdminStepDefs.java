@@ -1,14 +1,16 @@
-package stepdefinitions.firstsprint;
+package stepdefinitions.uistepdefinitions;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PatientPage;
+import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -19,16 +21,17 @@ public class US_015_PatientsByAdminStepDefs {
 
     Faker faker = new Faker();
 
-//
-//    @Given("user is on the home page")
-//    public void userIsOnTheHomePage() {
-//        Driver.getDriver().get(ConfigurationReader.getProperty("medunna_login_url"));
-//    }
-//
-//    @When("user clicks on the user icon")
-//    public void userClicksOnTheUserIcon() {
-//        homePage.userIcon.click();
-//    }
+
+
+    @Given("user is on the home page")
+    public void userIsOnTheHomePage() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("medunna_url"));
+    }
+
+    @When("user clicks on the user icon")
+    public void userClicksOnTheUserIcon() {
+        homePage.userIcon.click();
+    }
 
     @And("user clicks on the sign in link")
     public void userClicksOnTheSignInLink() {
@@ -71,10 +74,10 @@ public class US_015_PatientsByAdminStepDefs {
 
     @And("user enters valid patient credential and clicks save button")
     public void userEntersValidPatientCredentialAndClicksSaveButton() throws InterruptedException {
-        patientPage.firstNameBox.sendKeys(faker.name().firstName());
+        patientPage.firstNameBox.sendKeys("Team83_"+ faker.name().firstName());
         patientPage.lastNameBox.sendKeys(faker.name().lastName());
-        patientPage.birthDateBox.sendKeys("00198405050505");
-        patientPage.emailBox.sendKeys(faker.internet().emailAddress());
+        patientPage.birthDateBox.sendKeys("00"+faker.date().birthday().getTime());
+        patientPage.emailBox.sendKeys("Team83_"+faker.internet().emailAddress());
         patientPage.phoneBox.sendKeys(faker.number().digits(10));
         Select select = new Select(patientPage.genderBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
@@ -89,7 +92,7 @@ public class US_015_PatientsByAdminStepDefs {
         select = new Select(patientPage.stateBox);
         ReusableMethods.waitForVisibility(patientPage.stateBox, 5);
         select.selectByVisibleText("California");
-        patientPage.saveButton.click();
+        patientPage.saveButton.submit();
 
     }
 
