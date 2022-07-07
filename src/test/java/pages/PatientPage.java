@@ -46,7 +46,7 @@ public class PatientPage {
     @FindBy(xpath = "//*[@id='patient-country']")
     public WebElement countryBox;
 
-    @FindBy(xpath = "//*[@id='patient-cstate']")
+    @FindBy(xpath = "//*[@name='cstate.id']")
     public WebElement stateBox;
 
     @FindBy(xpath = "//button[@type='submit']")

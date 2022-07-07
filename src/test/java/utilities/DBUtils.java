@@ -104,7 +104,7 @@ public class DBUtils {
     }
 
     // This method returns the number fo row in a table in the database
-    public static int getRowCount() throws Exception {
+    public static int getRowCount(String query) throws Exception {
         resultSet.last();
         int rowCount = resultSet.getRow();
         return rowCount;
