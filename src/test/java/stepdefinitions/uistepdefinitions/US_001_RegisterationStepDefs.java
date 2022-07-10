@@ -24,7 +24,7 @@ public class US_001_RegisterationStepDefs {
     @Given("user is on the registration page")
     public void user_is_on_the_registration_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("medunna_registration_url"));
-
+        Driver.getDriver().get("https://medunna.com/register");
     }
 
     @Given("user enters a valid SSN number as {string}")
@@ -32,7 +32,7 @@ public class US_001_RegisterationStepDefs {
 
         ssn = faker.idNumber().ssnValid();
         Driver.waitAndSendText(registerPage.ssnBox, ssn);
-        US01Registrant.setSnn(ssn);
+        US01Registrant.setSsn(ssn);
 
     }
 
@@ -119,10 +119,19 @@ public class US_001_RegisterationStepDefs {
         registerPage.ssnBox.sendKeys(faker.idNumber().invalid());
 
     }
+    @Given("user does not send SSN number")
+    public void userDoesNotSendSSNNumber() {
+        registerPage.ssnBox.sendKeys("");
+    }
 
     @Then("user should see the SSN-invalid message")
     public void user_should_see_the_ssn_invalid_message() {
         Assert.assertTrue(registerPage.ssnInvalidErrorMessage.isDisplayed());
+    }
+    @Then("close the browser")
+    public void closeTheBrowser() {
+        Driver.closeDriver();
+
     }
 
 }

@@ -13,6 +13,7 @@ Feature: patient_by_admin
     Then user clicks on Patients button
     And user clicks on create new patient button
     And user enters valid patient credential and clicks save button
+#    And user saves the patient data
     Then user should see patient created message
 
 

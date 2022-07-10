@@ -87,11 +87,15 @@ public class US_015_PatientsByAdminStepDefs {
         patientPage.descriptionBox.sendKeys(faker.lorem().word());
         select = new Select(patientPage.userBox);
         ReusableMethods.selectRandomTextFromDropdown(select);
+
         select = new Select(patientPage.countryBox);
         select.selectByVisibleText("USA");
+
+
         select = new Select(patientPage.stateBox);
-        ReusableMethods.waitForVisibility(patientPage.stateBox, 5);
-        select.selectByVisibleText("California");
+        Thread.sleep(1000);
+        select.selectByIndex(0);
+
         patientPage.saveButton.submit();
 
     }
@@ -101,6 +105,11 @@ public class US_015_PatientsByAdminStepDefs {
 
         Assert.assertTrue(ReusableMethods.waitForVisibility(patientPage.successMessage, 5).isDisplayed());
     }
+//
+//    @And("user saves the patient data")
+//    public void userSavesThePatientData() {
+//        pojo olusturp save to txt file
+//    }
 }
 
 
