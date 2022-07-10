@@ -63,13 +63,15 @@ public class US_001_TXTWriter {
 
     }
 
-    public static void saveApiAllPatientsData(US_015_Patient_Pojo[] US015Patients) {
+    public static void saveApiAllPatientsData(US_015_Patient_Pojo[][] US015Patients) {
         try {
             FileWriter fw = new FileWriter(ConfigurationReader.getProperty("us_015_patients_data"), true);
 
             BufferedWriter bw = new BufferedWriter(fw);
 
             for (int i = 0; i <  US015Patients.length; i++) {
+                for
+
                 bw.append(US015Patients[i].toString()+"\n");
             }
             bw.close();
