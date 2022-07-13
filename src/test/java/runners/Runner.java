@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features",
         glue = {"stepdefinitions", "hooks"},
-        tags = "@GetApiPatients",
+        tags = "@US_006_Scenario_2",
         dryRun = false
 
 

@@ -55,7 +55,7 @@ public class US_001_DBStepDefs {
 
         table = "jhi_user";
         column = "ssn";
-        data = "234-23-2345";
+        data = "111-33-3333";
 //        select * from "+table
 //        DBUtils.getColumnData("select * from jhi_user","login");
         List<Object> allColumnData = DBUtils.getColumnData("select * from " + table + "", column);

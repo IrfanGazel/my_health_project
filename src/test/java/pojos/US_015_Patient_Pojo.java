@@ -20,7 +20,9 @@ public class US_015_Patient_Pojo {
         "email": "Team83_penny.boyle@hotmail.com",
         "description": "facilis",
         "user": {
-
+            "firstName": "Doctor",
+            "lastName": "Doctor",
+            "email": "doctore@email.com",
             "ssn": "411-73-3731",
 
         },
