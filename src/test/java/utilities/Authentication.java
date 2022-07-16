@@ -18,9 +18,9 @@ public class Authentication {
 
         //setting the expected data since we have less data, we can use map to store the data, else use pojo
         Map<String, Object> expectedData = new HashMap<>();
-        expectedData.put("password", "vusalgasimov");
+        expectedData.put("password", "vusalgasimov");//password is the key, vusalgasimov is the value, we can use your credentials as your value
         expectedData.put("rememberMe", true);
-        expectedData.put("username", "vusalgasimov");
+        expectedData.put("username", "vusalgasimov");//username is the key, vusalgasimov is the value, we can use your credentials as your value
 
         //setting the request body and getting the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}/{second}");

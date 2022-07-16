@@ -81,6 +81,21 @@ public class US_001_TXTWriter {
             e.printStackTrace();
         }
     }
+    public static void saveApiListPatientsData(List<Object> US015Patients) throws IOException {
+        try {
+            FileWriter fw = new FileWriter(ConfigurationReader.getProperty("us_015_patients_data"), true);
+
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            for (int i = 0; i < US015Patients.size(); i++) {
+
+                bw.append(US015Patients.get(i) + "\n");
+            }
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

@@ -43,7 +43,7 @@ public class US_015_API_Get_Patients_Data {
                 "Accept", ContentType.JSON
         ).when().get(ConfigurationReader.getProperty("api_patients_endpoint"));
 
-//       response.prettyPrint();
+       response.prettyPrint();
 
     }
 
@@ -52,14 +52,14 @@ public class US_015_API_Get_Patients_Data {
 
         JsonPath jsonPath = response.jsonPath();
         patientList = jsonPath.get("");
-
+        System.out.println(patientList.size());
 
     }
 
 
     @Then("user saves the patients data to the file and validates")
     public void user_saves_the_patients_data_to_the_file_and_validates() throws IOException {
-        saveApiAllPatientsData(patientList);
+        saveApiListPatientsData(patientList);
 
     }
 

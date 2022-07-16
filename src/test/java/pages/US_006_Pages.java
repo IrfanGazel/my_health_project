@@ -51,13 +51,13 @@ public class US_006_Pages {
     @FindBy(xpath = "//input[@id='lastName']")
     public WebElement lastName;
 
-    @FindBy(xpath = "(//div[@class='invalid-feedback'])[2]")
+    @FindBy(xpath = "(//*[@class='text-danger form-group'])[2]")
     public WebElement lastNameError;
 
     @FindBy(xpath = "//input[@id='email']")
     public WebElement eMail;
 
-    @FindBy(xpath = "(//div[@class='invalid-feedback'])[3]")
+    @FindBy(xpath = "(//*[@class='text-danger form-group'])[3]")
     public WebElement eMailError;
 
     @FindBy(xpath = "//button[@type='submit']")

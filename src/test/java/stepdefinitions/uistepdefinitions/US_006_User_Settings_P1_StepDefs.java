@@ -71,9 +71,9 @@ public class US_006_User_Settings_P1_StepDefs {
 
     @Then("User should be update firstname {string}")
     public void user_should_be_update_firstname(String firstName) {
-     ReusableMethods.waitFor(3);
-     us006Pages.firstName.clear();
-     Driver.waitAndSendText(us006Pages.firstName, firstName);
+        ReusableMethods.waitFor(3);
+        us006Pages.firstName.clear();
+        Driver.waitAndSendText(us006Pages.firstName, firstName);
 
     }
 
@@ -107,54 +107,64 @@ public class US_006_User_Settings_P1_StepDefs {
     }
 
 
-    @Then("User should be update invalid firstname {string}")
-    public void user_should_be_update_invalid_firstname(String invalidFirstName) {
-        ReusableMethods.waitFor(3);
-        us006Pages.firstName.clear();
-        us006Pages.firstName.sendKeys(invalidFirstName);
-        us006Pages.firstName.sendKeys(Keys.TAB);
-
-        // actions.sendKeys(us006Pages.firstName, invalidFirstName);
-        // Driver.waitAndSendText(us006Pages.firstName, invalidFirstName);
-        // driver.findElement(By.xpath("xpath = //input[@name='firstName']")).clear();
-    }
-
     @Then("User should see Your first name is required text message when entering invalid firstname")
     public void user_should_see_your_first_name_is_required_text_message_when_entering_invalid_firstname() {
-        us006Pages.firstName.sendKeys(Keys.TAB);
-        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.firstNameError, 3).isDisplayed());
-    }
+//        us006Pages.firstName.sendKeys(Keys.TAB);
+        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.firstNameError, 6).isDisplayed());
 
-
-    @Then("User should be update invalid lastname {string}")
-    public void user_should_be_update_invalid_lastname(String invalidLastName) {
-        ReusableMethods.waitFor(3);
-        us006Pages.lastName.clear();
-        us006Pages.lastName.sendKeys(invalidLastName);
-        us006Pages.lastName.sendKeys(Keys.TAB);
 
     }
 
 
     @Then("User should see Your last name is required text message when entering invalid lastname")
     public void user_should_see_your_last_name_is_required_text_message_when_entering_invalid_lastname() {
-        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.lastNameError, 3).isDisplayed());
+        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.lastNameError, 7).isDisplayed());
     }
 
-
-    @Then("User should be update invalid email {string}")
-    public void user_should_be_update_invalid_email(String invalidEmail) {
-        ReusableMethods.waitFor(3);
-        us006Pages.eMail.clear();
-        us006Pages.eMail.sendKeys(invalidEmail);
-       us006Pages.eMail.sendKeys(Keys.TAB);
-
-    }
 
     @Then("User should see Your email is required text message when entering invalid email")
     public void user_should_see_your_email_is_required_text_message_when_entering_invalid_email() {
-        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.eMailError, 3).isDisplayed());
+        Assert.assertTrue(ReusableMethods.waitForVisibility(us006Pages.eMailError, 7).isDisplayed());
     }
 
 
+    @Given("User leaves firstname blank")
+    public void userLeavesFirstnameBlank() {
+        ReusableMethods.waitForVisibility(us006Pages.firstName, 3).clear();
+        Driver.waitAndSendText(us006Pages.firstName, " ");
+        actions.sendKeys(Keys.TAB).build().perform();
+    }
+
+    @Given("User leaves lastname blank")
+    public void userLeavesLastnameBlank() {
+        ReusableMethods.waitForVisibility(us006Pages.lastName, 3).clear();
+        Driver.waitAndSendText(us006Pages.lastName, " ");
+        actions.sendKeys(Keys.TAB).build().perform();
+
+    }
+
+    @Given("User leaves email blank")
+    public void userLeavesEmailBlank() {
+        ReusableMethods.waitForVisibility(us006Pages.eMail, 3).clear();
+        Driver.waitAndSendText(us006Pages.eMail, " ");
+        actions.sendKeys(Keys.TAB).build().perform();
+    }
+
+    @Given("doctor enters a valid first name as {string}")
+    public void doctorEntersAValidFirstNameAs(String firstname) {
+        ReusableMethods.waitForVisibility(us006Pages.firstName, 3).clear();
+        Driver.waitAndSendText(us006Pages.firstName, firstname);
+    }
+
+    @Then("doctor enters a valid last name as {string}")
+    public void doctorEntersAValidLastNameAs(String lastname) {
+        ReusableMethods.waitForVisibility(us006Pages.lastName, 3).clear();
+        Driver.waitAndSendText(us006Pages.lastName, lastname);
+    }
+
+    @Then("user enters a invalid email as {string}")
+    public void userEntersAInvalidEmailAs(String email) {
+        ReusableMethods.waitForVisibility(us006Pages.eMail, 3).clear();
+        Driver.waitAndSendText(us006Pages.eMail, email);
+    }
 }
