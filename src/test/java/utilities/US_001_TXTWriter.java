@@ -1,6 +1,6 @@
 package utilities;
 
-import pojos.US_015_Patient_Pojo;
+import pages.DoctorAppointment;
 import pojos.US_01_Registrant;
 
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class US_001_TXTWriter {
 
-    public static void saveUiRegistrantData(US_01_Registrant US01Registrant) {
+    public static void saveUiRegistrantData(DoctorAppointment US01Registrant) {
         try {
             FileWriter fw = new FileWriter(ConfigurationReader.getProperty("database_registrant_data"), true);
 
