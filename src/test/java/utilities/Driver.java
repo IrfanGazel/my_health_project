@@ -118,7 +118,7 @@ public class Driver {
                 element.sendKeys(text);
                 return;
             } catch (WebDriverException e) {
-                wait(1);
+                wait(2);
             }
         }
     }
