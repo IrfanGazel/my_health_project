@@ -15,7 +15,6 @@ public class ResetPasswordPage {
     @FindBy(xpath ="//button[@type='submit']")
     public WebElement resetPassword;
 
-
     @FindBy(xpath = "//*[@class='Toastify__toast-container Toastify__toast-container--top-left toastify-container']")
     // @FindBy(xpath = "(//div[@role='alert'])[1]")
     public WebElement checkYourEmailMessage;

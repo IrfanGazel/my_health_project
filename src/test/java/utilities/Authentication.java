@@ -25,10 +25,12 @@ public class Authentication {
         //setting the request body and getting the response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}/{second}");
 
-//        response.prettyPrint();
+        response.prettyPrint();
 
         JsonPath json = response.jsonPath();
         return json.getString("id_token");
+
+
 
     }
 }
